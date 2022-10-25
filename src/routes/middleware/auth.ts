@@ -5,7 +5,7 @@ import { UserInstance } from '../../models/user';
 
 
 // Auth middleware to verify token
-export async function auth (req:Request | any,res:Response,next:NextFunction){
+export async function auth (req:Request | any, res:Response,next:NextFunction){
   try{
      const authorization = req.headers.authorization;
      if(!authorization){

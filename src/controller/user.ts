@@ -126,12 +126,10 @@ export async function LoginUser(req: Request, res: Response) {
       
       const { id } = record;
       const { password } = record;
-      console.log("trueeeeee1");
+      
 
       const token = generateToken({ id });
-      console.log("trueeeeee2");
       const validUser = await bcrypt.compare(req.body.password, password);
-console.log("yayyyyyy",validUser);
       if (!validUser) {
         return res.status(401).json({
           msg: "Password do not match",
