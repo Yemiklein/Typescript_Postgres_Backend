@@ -5,6 +5,8 @@ const secret = process.env.JWT_SECRET as string;
 import { UserInstance } from "../../models/user";
 import { usersGroupInstance } from "../../models/userGroup";
 
+
+//access control middleware to give or restricts access to a route
 export async function accessControl(
   req: Request | any,
   res: Response,

@@ -1,7 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.config';
 import { usersGroupInstance } from './userGroup';
-//import { uuid } from 'uuidv4';
+
+
+
 
 interface UserAtrribute {
   id: string;
@@ -12,7 +14,7 @@ interface UserAtrribute {
   phonenumber: number;
   password: string;
 }
-//console.log(uuid());
+
 export class UserInstance extends Model<UserAtrribute> {}
 
 UserInstance.init(

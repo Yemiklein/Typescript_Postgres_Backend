@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken';
 const secret = process.env.JWT_SECRET as string;
 import { UserInstance } from '../../models/user';
 
+
+// Auth middleware to verify token
 export async function auth (req:Request | any,res:Response,next:NextFunction){
   try{
      const authorization = req.headers.authorization;
@@ -43,4 +45,4 @@ export async function auth (req:Request | any,res:Response,next:NextFunction){
      return
   }
  
- }
+}

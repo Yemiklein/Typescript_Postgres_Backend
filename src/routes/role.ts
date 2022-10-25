@@ -26,7 +26,8 @@ router.get("/security_check", accessControl, securityCheck);
 
 router.get("/branch_manager", accessControl, BranchManager);
 
+router.post("/updaterole/:id", accessControl, updateRole);
 
-router.post("/updaterole/:id", updateRole);
+
 
 export default router;

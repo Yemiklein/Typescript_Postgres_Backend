@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.config';
-import { roleInstance } from './roles';
+
 
 
 interface usersGroupAttribute{

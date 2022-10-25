@@ -10,7 +10,7 @@ import bcrypt from "bcryptjs";
 import { roleInstance } from "../models/roles";
 import { generateToken } from "../utils/utils";
 import { usersGroupInstance } from "../models/userGroup";
-const secret = process.env.JWT_SECRET as string;
+
 
 export async function RegisterUser(
   req: Request,

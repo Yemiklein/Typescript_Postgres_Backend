@@ -1,19 +1,18 @@
-// import dotenv from "dotenv";
 import express, { Request, Response, NextFunction } from "express";
-import { v4 as uuidv4, validate } from "uuid";
-// import { UserInstance } from "../models/user";
-import { options, createRoleSchema, updateRoleSchema } from "../utils/validation";
-import bcrypt from "bcryptjs";
+import { v4 as uuidv4 } from "uuid";
+import {
+  options,
+  createRoleSchema,
+  updateRoleSchema,
+} from "../utils/validation";
 import { roleInstance } from "../models/roles";
-// import jwt from "jsonwebtoken";
-// import { generateToken } from "../utils/utils";
-// import { usersGroupInstance } from "../models/userGroup";
-// const secret = process.env.JWT_SECRET as string;
+
+
 
 export async function createRole(
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) {
   const id = uuidv4();
   try {
@@ -47,7 +46,7 @@ export async function createRole(
   }
 }
 
-export async function getRole(req: Request, res: Response, next: NextFunction) {
+export async function getRole(req: Request, res: Response) {
   try {
     const roleId = req.params.id;
     const record = (await roleInstance.findOne({
@@ -142,9 +141,7 @@ export async function BranchManager(
 
 export async function getRoles(
   req: Request,
-  res: Response,
-  next: NextFunction
-) {
+  res: Response) {
   try {
     const record = await roleInstance.findAll();
     if (record) {
