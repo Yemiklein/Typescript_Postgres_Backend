@@ -20,7 +20,8 @@ UserInstance.init(
     id: {
       type: DataTypes.STRING,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+     
     },
 
     firstname: {
@@ -33,15 +34,21 @@ UserInstance.init(
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
     phonenumber: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+
     },
     password: {
       type: DataTypes.STRING,

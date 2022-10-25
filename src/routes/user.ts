@@ -6,9 +6,9 @@ import {accessControl} from './middleware/accessControl';
 
 
 router.post('/create', RegisterUser);
-router.get('/getuser/:id', getUser);
 router.post('/login', LoginUser);
-router.get('/getalluser', getAllUser);
+router.get('/getuser/:id',auth, getUser);
+router.get('/getalluser',auth, accessControl, getAllUser);
 
 
 

@@ -52,9 +52,7 @@ export async function RegisterUser(
             email: req.body.email,
             phonenumber: req.body.phonenumber,
             password: passwordHash,
-            isVerified: false,
-            avatar: "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
-        })
+        });
         if (record) {
            
         res.status(201).json({msg:"User created successfully",record})
