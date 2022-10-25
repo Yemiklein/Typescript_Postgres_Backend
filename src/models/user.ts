@@ -11,8 +11,6 @@ interface UserAtrribute {
   email: string;
   phonenumber: number;
   password: string;
-  isVerified: boolean;
-  avatar: string;
 }
 //console.log(uuid());
 export class UserInstance extends Model<UserAtrribute> {}
@@ -47,16 +45,8 @@ UserInstance.init(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    isVerified: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-    },
-    avatar: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
   },
   {
     sequelize: db,

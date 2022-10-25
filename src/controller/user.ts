@@ -2,9 +2,8 @@ import dotenv from "dotenv";
 import express, { Request, Response, NextFunction } from "express";
 import { v4 as uuidv4, validate } from "uuid";
 import { UserInstance }  from "../models/user";
-import { validationSchema,options, loginSchema,createGroupSchema,createRoleSchema,createUsersGroupSchema,updateRoleSchema} from '../utils/validation'
+import { validationSchema, options, loginSchema } from '../utils/validation'
 import bcrypt from 'bcryptjs';
-import {groupInstance} from "../models/group";
 import {roleInstance} from "../models/roles";
 import jwt from 'jsonwebtoken';
 import { generateToken } from "../utils/utils";
@@ -83,13 +82,6 @@ export async function getUser(
         include: [{ model: usersGroupInstance, as: "groups" }],
       })) as unknown as { [key: string]: string|any };
     if (record) {
-        //  user_group= await record.groups.map(async (group:any)=>{
-        //     const UserGroup:any= await roleInstance.findAll({
-        //         where:{id:group.groupId},
-        //    })
-           
-        //       return UserGroup.roles
-        // })
         let roleArray=[];
         const UserGroups=record.groups;
         for (let i=0; i<UserGroups.length; i++){

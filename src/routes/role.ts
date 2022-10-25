@@ -12,3 +12,7 @@ router.get('/getroles',getRoles);
 router.post('/createrole',createRole);
 router.get('/send_query_letter',accessControl,issueQuery);
 router.post('/updaterole/:id',updateRole);
+
+
+
+export default router;

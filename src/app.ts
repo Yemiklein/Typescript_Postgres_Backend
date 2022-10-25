@@ -1,8 +1,8 @@
 import createError from 'http-errors';
 import express, { Request, Response, NextFunction } from 'express';
-import path from 'path';
+// import path from 'path';
 import cookieParser from 'cookie-parser';
-import logger from 'morgan';
+// import logger from 'morgan';
 import db from './config/database.config';
 import cors from 'cors';
 import 'dotenv/config';
@@ -34,6 +34,8 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use('/users', userRouter);
+app.use('/groups', groupRouter);
+app.use('/roles', roleRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

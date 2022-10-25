@@ -1,22 +1,14 @@
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 import express, { Request, Response, NextFunction } from "express";
 import { v4 as uuidv4, validate } from "uuid";
-import { UserInstance } from "../models/user";
-import {
-  validationSchema,
-  options,
-  loginSchema,
-  createGroupSchema,
-  createRoleSchema,
-  createUsersGroupSchema,
-  updateRoleSchema,
-} from "../utils/validation";
+// import { UserInstance } from "../models/user";
+import { options, createRoleSchema, updateRoleSchema } from "../utils/validation";
 import bcrypt from "bcryptjs";
 import { roleInstance } from "../models/roles";
-import jwt from "jsonwebtoken";
-import { generateToken } from "../utils/utils";
-import { usersGroupInstance } from "../models/userGroup";
-const secret = process.env.JWT_SECRET as string;
+// import jwt from "jsonwebtoken";
+// import { generateToken } from "../utils/utils";
+// import { usersGroupInstance } from "../models/userGroup";
+// const secret = process.env.JWT_SECRET as string;
 
 export async function createRole(
   req: Request,

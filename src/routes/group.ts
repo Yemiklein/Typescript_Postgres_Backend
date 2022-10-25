@@ -4,8 +4,11 @@ import { auth } from './middleware/auth';
 import { createGroup, getGroup, getGroups, addUserToGroup } from '../controller/group';
 import {accessControl} from './middleware/accessControl';
 
-
-router.post('/creategroup',createGroup);
+router.post('/creategroup', createGroup);
 router.get('/getgroups',getGroups);
 router.get('/getgroup/:id',getGroup);
 router.post('/addusertogroup',addUserToGroup);
+
+
+
+export default router;
