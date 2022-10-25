@@ -80,7 +80,7 @@ export async function issueQuery(
     console.log(error);
     res.status(403).json({
       message: "Access forbidden",
-      route: "/issuequery",
+      route: "/issue_query",
     });
   }
 }
@@ -99,24 +99,6 @@ export async function securityCheck(
     res.status(403).json({
       message: "Access forbidden",
       route: "/security_check",
-    });
-  }
-}
-
-export async function issueQuery(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  try {
-    res
-      .status(201)
-      .json({ msg: "You have user privilege to this functionality" });
-  } catch (error) {
-    console.log(error);
-    res.status(403).json({
-      message: "Access forbidden",
-      route: "/issue_query",
     });
   }
 }
