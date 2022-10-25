@@ -26,11 +26,11 @@ UserInstance.init(
 
     firstname: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastname: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     username: {
       type: DataTypes.STRING,
@@ -41,9 +41,6 @@ UserInstance.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     phonenumber: {
       type: DataTypes.TEXT,
@@ -57,9 +54,10 @@ UserInstance.init(
   },
   {
     sequelize: db,
-    tableName: 'userTable'
-  }
+    tableName: 'userTable',
+  },
 );
 
- UserInstance.hasMany(usersGroupInstance, { foreignKey: "userId", as: "groups" });
- usersGroupInstance.belongsTo(UserInstance, { foreignKey: "userId", as: "user" });
+UserInstance.hasMany(usersGroupInstance,{ foreignKey: "userId", as: "groups"});
+
+usersGroupInstance.belongsTo(UserInstance,{ foreignKey: "userId", as: "user"});

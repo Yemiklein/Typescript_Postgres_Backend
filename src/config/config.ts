@@ -1,6 +1,10 @@
-const dotenv = require('dotenv')
-
+const dotenv = require('dotenv');
 dotenv.config();
+
+
+
+
+
 
 export const db_host = String(process.env.DB_HOST);
 

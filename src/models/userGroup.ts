@@ -13,30 +13,30 @@ interface usersGroupAttribute{
 
 export class usersGroupInstance extends Model<usersGroupAttribute>{}
 usersGroupInstance.init({
-    id:{
-        type:DataTypes.STRING,
-        primaryKey:true,
-        allowNull:false
-    },
-    userId:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
-    groupId:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
-    groupname:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
+  id:{
+    type:DataTypes.STRING,
+    primaryKey:true,
+    allowNull:false,
+  },
+  userId:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  groupId:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  groupname:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
     
 },
-    {
-        sequelize: db,
-        tableName: 'usersGroupTable'
-      },
-)
+{
+  sequelize: db,
+  tableName: 'usersGroupTable',
+},
+);
 
 
 
