@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { roleInstance } from "../../models/roles";
 const secret = process.env.JWT_SECRET as string;
