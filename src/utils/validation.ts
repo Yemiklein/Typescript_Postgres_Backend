@@ -48,6 +48,9 @@ export const createUsersGroupSchema=Joi.object({
   groupId:Joi.string().trim().required(),
   userId:Joi.string().trim().required(),
   })
+  export  const updateRoleSchema=Joi.object({
+    rolename:Joi.string().trim().required(),
+  })
 export const options = {
   abortEarly: false,
   errors: {

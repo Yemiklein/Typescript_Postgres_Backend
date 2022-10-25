@@ -9,6 +9,9 @@ import 'dotenv/config';
 
 
 import userRouter from './routes/user';
+import groupRouter from './routes/group';
+import roleRouter from './routes/role';
+
 
 
  //db.sync({force:true})

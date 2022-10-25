@@ -1,13 +1,14 @@
 import express, { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { roleInstance } from '../../models/roles';
 const secret = process.env.JWT_SECRET as string;
 import { UserInstance } from '../../models/user';
+import { usersGroupInstance } from '../../models/userGroup';
 
 export async function accessControl (req:Request | any,res:Response,next:NextFunction){
   try{
    
     const address= req.url.split('/')[1];
-    console.log(address)
      const authorization = req.headers.authorization;
      if(!authorization){
          return res.status(403).json({
@@ -33,10 +34,22 @@ export async function accessControl (req:Request | any,res:Response,next:NextFun
          
      }
      req.user = verified 
-     next()
+        const role = await usersGroupInstance.findAll({where:{userId:req.user.id}})
+        const groupIDS = role.map((item:any)=>item.groupId)
+     const approvedRole = await roleInstance.findOne({where:{rolename:address}}) as unknown as { [key: string]: string|any }
+     const uniqueGroupIDS = [...new Set(groupIDS)];
+
+     if(uniqueGroupIDS.includes(approvedRole.groupId)){
+         next()
+     }
+        else{
+            return res.status(403).json({
+                Error:'Forbidden, you dont have user privilege to this route: ACCESS DENIED'
+            })
+        }
   }catch (error){
      return res.status(500).json({
-         Error:"An error occured, access prohibited"
+         Error:"An error occured, access prohibited",
      })
     
   }
