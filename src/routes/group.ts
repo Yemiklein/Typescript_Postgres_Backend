@@ -17,6 +17,6 @@ router.get("/getgroups", getGroups);
 
 router.get("/getgroup/:id", auth, getGroup);
 
-router.post("/addusertogroup",accessControl, addUserToGroup);
+router.post("/addusertogroup", accessControl, addUserToGroup);
 
 export default router;
