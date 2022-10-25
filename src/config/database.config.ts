@@ -14,6 +14,6 @@ export default new Sequelize({
 
   username: db_user,
 
-  password: db_password
+  password: db_password,
 
 });

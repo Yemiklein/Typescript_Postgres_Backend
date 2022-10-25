@@ -1,5 +1,5 @@
 import createError from 'http-errors';
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import db from './config/database.config';
 import cors from 'cors';

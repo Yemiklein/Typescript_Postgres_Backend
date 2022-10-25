@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 import { v4 as uuidv4, validate } from "uuid";
 import { UserInstance } from "../models/user";
 import { validationSchema, options, loginSchema } from "../utils/validation";
@@ -12,7 +15,6 @@ const secret = process.env.JWT_SECRET as string;
 export async function RegisterUser(
   req: Request,
   res: Response,
-  next: NextFunction
 ) {
   const id = uuidv4();
   try {
@@ -70,10 +72,10 @@ export async function getUser(req: Request, res: Response) {
       include: [{ model: usersGroupInstance, as: "groups" }],
     })) as unknown as { [key: string]: string | any };
     if (record) {
-      let roleArray = [];
+      const roleArray = [];
       const UserGroups = record.groups;
       for (let i = 0; i < UserGroups.length; i++) {
-        let roles = await roleInstance.findAll({
+        const roles = await roleInstance.findAll({
           where: { groupId: UserGroups[i].groupId },
         });
         roleArray.push(roles);
