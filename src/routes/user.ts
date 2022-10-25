@@ -9,9 +9,9 @@ router.post('/create', RegisterUser);
 
 router.post('/login', LoginUser);
 
-router.get('/getuser/:id',auth, getUser);
+router.get('/getuser/:id', auth, getUser);
 
-router.get('/getalluser',auth, accessControl, getAllUser);
+router.get('/getalluser', accessControl, getAllUser);
 
 
 

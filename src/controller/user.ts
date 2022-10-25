@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import express, { Request, Response } from "express";
-import { v4 as uuidv4, validate } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import { UserInstance } from "../models/user";
 import { validationSchema, options, loginSchema } from "../utils/validation";
 import bcrypt from "bcryptjs";
@@ -113,6 +113,7 @@ export async function LoginUser(req: Request, res: Response) {
     }
     const userEmail = req.body.email;
     const userName = req.body.username;
+  
     const record = userEmail
       ? ((await UserInstance.findOne({
         where: [{ email: userEmail }],
@@ -122,12 +123,15 @@ export async function LoginUser(req: Request, res: Response) {
       })) as unknown as { [key: string]: string });
 
     if (record) {
+      
       const { id } = record;
       const { password } = record;
+      console.log("trueeeeee1");
 
       const token = generateToken({ id });
+      console.log("trueeeeee2");
       const validUser = await bcrypt.compare(req.body.password, password);
-
+console.log("yayyyyyy",validUser);
       if (!validUser) {
         return res.status(401).json({
           msg: "Password do not match",
