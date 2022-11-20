@@ -111,7 +111,6 @@ export async function BranchManager(
       .status(201)
       .json({ msg: "You have user privilege to this functionality" });
   } catch (error) {
-    console.log(error);
     res.status(403).json({
       message: "Access forbidden",
       route: "/branch_manager",

@@ -121,8 +121,8 @@ export async function addUserToGroup(
     }
   } catch (error) {
     res.status(500).json({
-      message: "failed to create group",
-      route: "/creategroup",
+      message: "failed to add user to group",
+      route: "/addusertogroup",
     });
   }
 }

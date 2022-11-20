@@ -11,12 +11,12 @@ import { accessControl } from "./middleware/accessControl";
 
 
 
-router.post("/creategroup", accessControl, createGroup);
+router.post("/creategroup", createGroup);
 
 router.get("/getgroups", accessControl, getGroups);
 
 router.get("/getgroup/:id", auth, getGroup);
 
-router.post("/addusertogroup", accessControl, addUserToGroup);
+router.post("/addusertogroup",  addUserToGroup);
 
 export default router; 
