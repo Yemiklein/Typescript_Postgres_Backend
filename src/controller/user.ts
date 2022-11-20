@@ -179,4 +179,23 @@ export async function getAllUser(req: Request, res: Response) {
 }
 
 
-export
+export async function deleteUser (req: Request, res: Response) {
+  try {
+    const userId = req.params.id;
+    const record = await UserInstance.destroy({
+      where: { id: userId },
+    });
+    if (record) {
+      res.status(200).json({ msg: "User deleted successfully" });
+    } else {
+      res.status(404).json({
+        message: "User not found",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      msg: "Invalid User",
+      route: "/deleteuser/:id",
+    });
+  }
+}

@@ -7,8 +7,6 @@ import {
 } from "../utils/validation";
 import { roleInstance } from "../models/roles";
 
-
-
 export async function createRole(
   req: Request,
   res: Response,
@@ -25,12 +23,12 @@ export async function createRole(
     }
 
     const record = await roleInstance.create({
-      id: id,
+      id,
       groupId: req.body.groupId,
       rolename: req.body.rolename,
       roledescription: req.body.roledescription,
       roleavatar:
-        "https://i.pinimg.com/564x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
+    "https://i.pinimg.com/564x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
       rolepermissions: req.body.rolepermissions,
     });
 
@@ -121,9 +119,7 @@ export async function BranchManager(
   }
 }
 
-export async function getRoles(
-  req: Request,
-  res: Response) {
+export async function getRoles(req: Request, res: Response) {
   try {
     const record = await roleInstance.findAll();
     if (record) {

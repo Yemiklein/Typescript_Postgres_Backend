@@ -1,21 +1,23 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
-import { auth } from './middleware/auth';
-import { LoginUser, RegisterUser, getUser, getAllUser} from'../controller/user';
-import {accessControl} from './middleware/accessControl';
+import { auth } from "./middleware/auth";
+import {
+  LoginUser,
+  RegisterUser,
+  getUser,
+  getAllUser,
+  deleteUser,
+} from "../controller/user";
+import { accessControl } from "./middleware/accessControl";
 
+router.post("/create", RegisterUser);
 
-router.post('/create', RegisterUser);
+router.post("/login", LoginUser);
 
-router.post('/login', LoginUser);
+router.get("/getuser/:id", auth, getUser);
 
-router.get('/getuser/:id', auth, getUser);
+router.get("/getalluser", accessControl, getAllUser);
 
-router.get('/getalluser', accessControl, getAllUser);
-
-
-
-
-
+router.delete("/deleteuser/:id", auth, deleteUser);
 
 export default router;

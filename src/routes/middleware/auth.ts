@@ -10,9 +10,9 @@ export async function auth (
   try{
     const authorization = req.headers.authorization;
     if(!authorization){
-      res.status(401)
+      res.status(401);
       res.json({
-        Error:'kindly sign in as a user'
+        Error:'kindly sign in as a user',
       })
     }
     
@@ -20,30 +20,30 @@ export async function auth (
     let verified = jwt.verify(token, secret);
  
     if(!verified){
-      res.status(401)
+      res.status(401);
       res.json({
-        Error: 'User not verified, you cant access this route'
-      })
-      return
+        Error: 'User not verified, you cant access this route',
+      });
+      return;
     }
-    const {id} = verified as {[key:string]:string}
+    const {id} = verified as {[key:string]:string};
  
-    const user = await UserInstance.findOne({where:{id}})
+    const user = await UserInstance.findOne({where:{id}});
     if(!user){
-      res.status(404)
+      res.status(404);
       res.json({
-        Error:'user not verified'
+        Error:'user not verified',
       })
       return
     }
-    req.user = verified 
-    next()
+    req.user = verified;
+    next();
   }catch (error){
-    res.status(500)
+    res.status(500);
     res.json({
-      Error:"user not logged in"
-    })
-    return
+      Error:"user not logged in",
+    });
+    return;
   }
  
 }

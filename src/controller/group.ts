@@ -29,7 +29,7 @@ export async function createGroup(
       groupname: req.body.groupname,
       groupdescription: req.body.groupdescription,
       groupavatar:
-        "https://i.pinimg.com/564x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
+    "https://i.pinimg.com/564x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
     });
     if (record) {
       res.status(201).json({ msg: "Group created successfully", record });
