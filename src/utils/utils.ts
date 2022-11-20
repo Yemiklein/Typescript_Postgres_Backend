@@ -1,3 +1,4 @@
+/* eslint-disable node/no-process-env */
 import jwt from "jsonwebtoken";
 
 export const generateToken=(user:{[key:string]:unknown}):unknown=>{

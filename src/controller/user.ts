@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -11,11 +12,7 @@ import { roleInstance } from "../models/roles";
 import { generateToken } from "../utils/utils";
 import { usersGroupInstance } from "../models/userGroup";
 
-
-export async function RegisterUser(
-  req: Request,
-  res: Response,
-) {
+export async function RegisterUser(req: Request, res: Response) {
   const id = uuidv4();
   try {
     const ValidateUser = validationSchema.validate(req.body, options);
@@ -30,6 +27,15 @@ export async function RegisterUser(
     if (duplicatEmail) {
       return res.status(409).json({
         msg: "Email is used, please enter another email",
+      });
+    }
+
+    const duplicateUsername = await UserInstance.findOne({
+      where: { username: req.body.username },
+    });
+    if (duplicateUsername) {
+      return res.status(409).json({
+        msg: "Username is used, please enter another username",
       });
     }
 
@@ -113,7 +119,7 @@ export async function LoginUser(req: Request, res: Response) {
     }
     const userEmail = req.body.email;
     const userName = req.body.username;
-  
+    console.log(1)
     const record = userEmail
       ? ((await UserInstance.findOne({
         where: [{ email: userEmail }],
@@ -121,13 +127,10 @@ export async function LoginUser(req: Request, res: Response) {
       : ((await UserInstance.findOne({
         where: [{ username: userName }],
       })) as unknown as { [key: string]: string });
-
     if (record) {
       
       const { id } = record;
       const { password } = record;
-      
-
       const token = generateToken({ id });
       const validUser = await bcrypt.compare(req.body.password, password);
       if (!validUser) {
@@ -135,13 +138,12 @@ export async function LoginUser(req: Request, res: Response) {
           msg: "Password do not match",
         });
       }
-
       if (validUser) {
         res.status(200).json({
           status: "success",
           msg: "login successful",
-          record: record,
-          token: token,
+          record,
+          token,
         });
       }
     } else {
@@ -157,6 +159,7 @@ export async function LoginUser(req: Request, res: Response) {
   }
 }
 
+      
 export async function getAllUser(req: Request, res: Response) {
   try {
     const record = await UserInstance.findAll();
@@ -174,3 +177,6 @@ export async function getAllUser(req: Request, res: Response) {
     });
   }
 }
+
+
+export

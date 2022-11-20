@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 import createError from 'http-errors';
 import express, { Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
