@@ -16,7 +16,7 @@ router.post("/login", LoginUser);
 
 router.get("/getuser/:id", auth, getUser);
 
-router.get("/getalluser", getAllUser);
+router.get("/getalluser",accessControl, getAllUser);
 
 router.delete("/deleteuser/:id", auth, accessControl, deleteUser);
 
