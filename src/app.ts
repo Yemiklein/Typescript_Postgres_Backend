@@ -17,7 +17,7 @@ import roleRouter from './routes/role';
  //db.sync({force:true})
 db.sync({alter:true})
   .then(() => {
-    console.log('Database conneted successfully 🎉🚀');
+    console.log('Database conneted successfully 🪐🚀');
   })
   .catch((err) => {
     console.log(err);
