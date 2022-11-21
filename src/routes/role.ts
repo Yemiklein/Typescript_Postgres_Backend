@@ -16,11 +16,11 @@ import { accessControl } from "./middleware/accessControl";
 
 router.get("/getrole/:id", auth, getRole);
 
-router.get("/getroles", accessControl, getRoles);
+router.get("/getroles", getRoles);
 
 router.post("/createrole", createRole);
 
-router.get("/send_query_letter", accessControl, issueQuery);
+router.get("/issuequery", accessControl, issueQuery);
 
 router.get("/security_check", accessControl, securityCheck);
 

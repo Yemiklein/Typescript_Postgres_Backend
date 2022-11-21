@@ -16,8 +16,8 @@ router.post("/login", LoginUser);
 
 router.get("/getuser/:id", auth, getUser);
 
-router.get("/getalluser", accessControl, getAllUser);
+router.get("/getalluser", getAllUser);
 
-router.delete("/deleteuser/:id", auth, deleteUser);
+router.delete("/deleteuser/:id", auth, accessControl, deleteUser);
 
 export default router;

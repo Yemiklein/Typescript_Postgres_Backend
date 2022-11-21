@@ -19,6 +19,7 @@ export async function accessControl(
 ) {
   try {
     const address = req.url.split("/")[1];
+    console.log(address);
     const authorization = req.headers.authorization;
     if (!authorization) {
       return res.status(403).json({
@@ -47,9 +48,11 @@ export async function accessControl(
     }
 
     req.user = verified;
+    
     const role = await usersGroupInstance.findAll({
       where: { userId: req.user.id },
     });
+    console.log(role)
     const groupIDS = role.map((item: any) => item.groupId);
     const approvedRole = (await roleInstance.findOne({
       where: { rolename: address },

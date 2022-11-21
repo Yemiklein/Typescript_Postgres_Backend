@@ -11,9 +11,9 @@ import { accessControl } from "./middleware/accessControl";
 
 
 
-router.post("/creategroup", createGroup);
+router.post("/CreateGroup", accessControl, createGroup);
 
-router.get("/getgroups", accessControl, getGroups);
+router.get("/getgroups", getGroups);
 
 router.get("/getgroup/:id", auth, getGroup);
 
